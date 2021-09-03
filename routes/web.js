@@ -45,16 +45,16 @@ function initRoutes(app) {
     app.post('/status',statusController().update);
 
     
+    app.get('/:id',auth,orderController().show)
+    // app.get('*', function(req, res){
+    //     res.send('what???', 404);
+    //   });
     
     // app.use((req,res)=>{
     //     res.status(404).render('errors/404')
     // })
     
-    // app.get('*', function(req, res){
-    //     res.send('what???', 404);
-    //   });
     
-    app.get('/:id',auth,orderController().show)
     
 }
 
