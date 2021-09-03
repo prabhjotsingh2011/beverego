@@ -19,9 +19,6 @@ mongoose.connect(process.env.MONGO_CONNECTION_URL, { useCreateIndex: true, useFi
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log("database connected");
-}).catch((err) => {
-    console.log("failed");
-    console.log(err);
 })
 
 
