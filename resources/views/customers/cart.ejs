@@ -1,0 +1,65 @@
+
+
+<section class="cart">
+
+    <% if(sessionss.cart){ %>
+
+    <div class="order cotainer xl:mx-auto  ml-12 mr-12 py-16 xl:w-1/2">
+        <div class="flex item-center border-b border-gray-300 pb-4">
+            <img src="/img/cart-black.png" alt="" srcset="">
+            <h1 class="font-bold ml-4 text-2xl">Order Summaary</h1>
+        </div>
+        <div class="pizza-list ">
+            <% for(let drink of Object.values(sessionss.cart.items)){ %>
+            <div class="flex items-center my-8 ">
+                <img class="w-24" src="/img/<%= drink.item.image %>" alt="">
+
+                <div class="ml-4 flex-1">
+                    <h1><%= drink.item.name %></h1>
+                    <span><%= drink.item.size %></span>
+                </div>
+                <span class="flex-1"><%= drink.qty %></span>
+                <span class="font-bold text-lg">₹<%= drink.item.price * drink.qty %></span>
+            </div>
+            <% } %>
+        </div>
+
+        <hr >
+        <div class="text-right py-4">
+            <div>
+                <span class="font-bold text-lg ">Total Amount</span>
+                <span class="amount text-2xl font-bold ml-2">₹<%= sessionss.cart.totalPrice %></span>
+
+            </div>
+            <% if(user){ %>
+            <div>
+                <form action="/orders" method="POST" class="mt-12 ">
+                    <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" type="text" placeholder="Phone Number" name="" id=" ">
+                    <input name="address" class="border border-gray-400 p-2 w-1/2" type="text" placeholder="Address" name="" id=" ">
+                    <div>
+                        <button type="submit" class="btn-primary py-2 px-6 rounded-full text-white font-bold mt-6">Order Now</button>
+                    </div>
+                </form>
+            </div>
+            <% }else{%>
+            <a href="/login" class="inline-block cursor-pointer btn-primary py-2 px-6 rounded-full text-white font-bold mt-6">Login to continue</a>
+            <% } %>
+          
+            
+            
+        </div>
+    </div>
+    <% }%>
+    <% if(!sessionss.cart){ %>
+    <section class="empty-card py-10">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-bold mb-2 ">Cart Empty 🙃</h1>
+            <p class="yexy-grey-500 text-lg mb-4 leading-6"> You probably haven't ordered a pizza yet. <br>
+                To order a pizza go to main page.
+            </p>
+            <img class="w-2/5 mx-auto" src="/img/empty-cart.png" alt="empty" srcset="">
+            <a href="/" class="inline-block px-6 py-2 rounded-full btn-primary text-white font-bold mt-12 ">Go Back</a>
+        </div>
+    </section>
+    <% } %>
+</section>
