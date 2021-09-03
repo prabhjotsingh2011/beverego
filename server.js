@@ -76,7 +76,7 @@ app.use((req,res,next)=>{
 app.use(expressLayouts);
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
-app.set('views', path.join(__dirname, '/resources/Views'));
+app.set('views', path.join(__dirname, '/resources/views'));
 app.set('view engine', 'ejs');
 
 
